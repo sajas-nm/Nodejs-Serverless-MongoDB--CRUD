@@ -1,0 +1,57 @@
+service: serverless-poc
+
+plugins:
+  - serverless-offline
+
+custom:
+   serverless-offline: ## add this two line
+      port: 3001 
+
+provider:
+   name: aws
+   runtime: nodejs10.15.2
+   profile: wl-api
+   stage: dev
+   region: ap-south-1
+
+functions:
+    createCustomer:
+       handler: handler.createCustomer
+       timeout: 30
+       events:
+          - http:
+             path: cus
+             method: post
+
+    updateCustomer:
+       handler: handler.updateCustomer
+       timeout: 30
+       events:
+          - http:
+             path: cus/{id}
+             method: put
+
+    deleteCustomer:
+       handler: handler.deleteCustomer
+       timeout: 30
+       events:
+          - http:
+             path: cus/{id}
+             method: delete
+
+    FindAllCustomers:
+       handler: handler.FindAllCustomers
+       timeout: 30
+       events:
+          - http:
+             path: cus
+             method: get
+
+    FindCustomer:
+      handler: handler.FindCustomer
+      timeout: 30
+      events:
+         - http:
+            path: cus/{id}
+            method: get
+
