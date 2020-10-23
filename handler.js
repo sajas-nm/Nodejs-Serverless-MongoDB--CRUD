@@ -1,4 +1,4 @@
-const db = require('monk')('mongodb://node_client:pass@cluster0-shard-00-00-jierq.mongodb.net:27017,cluster0-shard-00-01-jierq.mongodb.net:27017,cluster0-shard-00-02-jierq.mongodb.net:27017/my-test-db?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority');
+const db = require('monk')('.....');
 db.then(() => {
     console.log('Connected correctly to server')
 }).catch(err => {
